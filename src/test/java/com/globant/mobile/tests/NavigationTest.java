@@ -2,14 +2,14 @@ package com.globant.mobile.tests;
 
 import com.globant.mobile.screens.*;
 import com.globant.mobile.utils.BaseTest;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class FirstTest extends BaseTest {
+public class NavigationTest extends BaseTest {
 
     @Test
-    public void test_01(){
+    public void testNavigationThroughBottomMenu(){
+
         HomeScreen homeScreen = new HomeScreen(driver);
         NavigationBarScreen navigationBarScreen = new NavigationBarScreen(driver);
 
@@ -26,6 +26,6 @@ public class FirstTest extends BaseTest {
         Assert.assertTrue(swipeScreen.checkSwipeScreen(), "Swipe screen is not displayed");
 
         DragScreen dragScreen = navigationBarScreen.clickBtnDragPage();
-        Assert.assertTrue(dragScreen.checkDragScreen());
+        Assert.assertTrue(dragScreen.checkDragScreen(),  "Drag screen is not displayed");
     }
 }

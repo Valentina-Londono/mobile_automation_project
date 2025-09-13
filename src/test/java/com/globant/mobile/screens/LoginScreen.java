@@ -37,6 +37,9 @@ public class LoginScreen extends BaseScreen {
     @AndroidFindBy(uiAutomator = "className(\"android.view.ViewGroup\").instance(17)")
     WebElement btnSubmitSignUp;
 
+    @AndroidFindBy(id = "android:id/alertTitle")
+    WebElement lblAlertTitle;
+
     public LoginScreen(AppiumDriver driver) {
         super(driver);
     }
@@ -44,4 +47,34 @@ public class LoginScreen extends BaseScreen {
     public boolean checkLoginScreen() {
         return lblLoginSignUp.isDisplayed();
     }
+
+    public void clickBtnLoginForm() {
+        btnLoginForm.click();
+    }
+
+    public void clickBtnSignUpForm() {
+        btnSignUpForm.click();
+    }
+
+    public void completeSignUpEmail(String email) {
+        txtEmailSignUp.sendKeys(email);
+    }
+
+    public void completeSignUpPassword(String password) {
+        txtPasswordSignUp.sendKeys(password);
+    }
+
+    public void completeSignUpConfirmPassword(String confirmPassword) {
+        txtConfirmPasswordSignUp.sendKeys(confirmPassword);
+    }
+
+    public void clickBtnSubmitSignUp() {
+        btnSubmitSignUp.click();
+    }
+
+    public boolean checkSuccessSignUp() {
+        wait.waitForElementVisible(lblAlertTitle);
+        return lblAlertTitle.isDisplayed();
+    }
+
 }

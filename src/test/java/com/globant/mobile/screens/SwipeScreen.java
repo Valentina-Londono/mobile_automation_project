@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 
 public class SwipeScreen extends BaseScreen {
 
-    @AndroidFindBy(uiAutomator = "text(\"Form components\")")
+    @AndroidFindBy(uiAutomator = "text(\"Swipe horizontal\")")
     WebElement lblSwipePage;
 
     @AndroidFindBy(uiAutomator = "text(\"\uDB80\uDEA4\")")
