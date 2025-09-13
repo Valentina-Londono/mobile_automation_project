@@ -7,14 +7,14 @@ import org.openqa.selenium.WebElement;
 
 public class DragScreen extends BaseScreen {
 
-    @AndroidFindBy(uiAutomator = "text(\"\uDB82\uDDBE\")")
+    @AndroidFindBy(uiAutomator = "text(\"Drag and Drop\")")
     WebElement lblDragPage;
 
     public DragScreen(AppiumDriver driver) {
         super(driver);
     }
 
-    public void checkDragScreen() {
-        lblDragPage.isDisplayed();
+    public boolean checkDragScreen() {
+        return lblDragPage.isDisplayed();
     }
 }

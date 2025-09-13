@@ -41,7 +41,7 @@ public class LoginScreen extends BaseScreen {
         super(driver);
     }
 
-    public void checkLoginScreen() {
-        lblLoginSignUp.isDisplayed();
+    public boolean checkLoginScreen() {
+        return lblLoginSignUp.isDisplayed();
     }
 }

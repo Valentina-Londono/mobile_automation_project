@@ -14,7 +14,8 @@ public class WebviewScreen extends BaseScreen {
         super(driver);
     }
 
-    public void checkWebviewScreen() {
-        webViewContainer.isDisplayed();
+    public boolean checkWebviewScreen() {
+        wait.waitForElementVisible(webViewContainer);
+        return webViewContainer.isDisplayed();
     }
 }

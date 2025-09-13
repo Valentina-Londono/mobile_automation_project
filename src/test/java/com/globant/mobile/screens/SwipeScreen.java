@@ -32,7 +32,7 @@ public class SwipeScreen extends BaseScreen {
         super(driver);
     }
 
-    public void checkSwipeScreen() {
-        lblSwipePage.isDisplayed();
+    public boolean checkSwipeScreen() {
+        return lblSwipePage.isDisplayed();
     }
 }

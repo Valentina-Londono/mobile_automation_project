@@ -16,7 +16,7 @@ public class HomeScreen extends BaseScreen {
         super(driver);
     }
 
-    public void checkImgHome(){
-        imgHome.isDisplayed();
+    public boolean checkImgHome(){
+        return imgHome.isDisplayed();
     }
 }

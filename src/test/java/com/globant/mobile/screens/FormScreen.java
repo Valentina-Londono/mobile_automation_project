@@ -14,7 +14,7 @@ public class FormScreen extends BaseScreen {
         super(driver);
     }
 
-    public void checkFormScreen() {
-        lblFormPage.isDisplayed();
+    public boolean checkFormScreen() {
+        return lblFormPage.isDisplayed();
     }
 }
