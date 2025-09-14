@@ -5,6 +5,8 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class SwipeScreen extends BaseScreen {
 
     @AndroidFindBy(uiAutomator = "text(\"Swipe horizontal\")")
@@ -28,6 +30,12 @@ public class SwipeScreen extends BaseScreen {
     @AndroidFindBy(uiAutomator = "text(\"\uDB82\uDDBE\")")
     WebElement cardCompatible;
 
+    @AndroidFindBy(uiAutomator = "description(\"card\")")
+    List<WebElement> visibleCards;
+
+    @AndroidFindBy(uiAutomator = "text(\"You found me!!!\")")
+    WebElement lblFoundMe;
+
     public SwipeScreen(AppiumDriver driver) {
         super(driver);
     }
@@ -35,4 +43,45 @@ public class SwipeScreen extends BaseScreen {
     public boolean checkSwipeScreen() {
         return lblSwipePage.isDisplayed();
     }
+
+    public void swipeIntoCards() {
+        swipeHorizontalRightToLeft();
+    }
+
+    public void swipeToFoundMe(){
+        swipeVerticallyCenterToUp();
+    }
+
+    public boolean checkGithubCard(){
+        return checkElementNotVisible(cardGitHub);
+    }
+
+    public boolean checkCommunityCard(){
+        return checkElementNotVisible(cardCommunity);
+    }
+
+    public boolean checkJSCard(){
+        return checkElementNotVisible(cardJS);
+    }
+
+    public boolean checkCardVideos(){
+        return checkElementNotVisible(cardVideos);
+    }
+
+    public boolean checkCardExtendable(){
+        return checkElementNotVisible(cardExtendable);
+    }
+
+    public boolean checkCardCompatible(){
+        return checkElementNotVisible(cardCompatible);
+    }
+
+    public int countNumberOfCards(){
+        return visibleCards.size();
+    }
+
+    public boolean checkLblFoundMe(){
+        return lblFoundMe.isDisplayed();
+    }
+
 }

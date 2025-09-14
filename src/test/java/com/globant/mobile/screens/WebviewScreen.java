@@ -7,15 +7,14 @@ import org.openqa.selenium.WebElement;
 
 public class WebviewScreen extends BaseScreen {
 
-    @AndroidFindBy(uiAutomator = "text(\"Next-gen browser and mobile automation test framework for Node.js\")")
-    WebElement webViewContainer;
+    @AndroidFindBy(uiAutomator = "text(\"WebdriverIO\")")
+    WebElement imgWebview;
 
     public WebviewScreen(AppiumDriver driver) {
         super(driver);
     }
 
     public boolean checkWebviewScreen() {
-        wait.waitForElementVisible(webViewContainer);
-        return webViewContainer.isDisplayed();
+        return isTheElementVisible(imgWebview, 20);
     }
 }

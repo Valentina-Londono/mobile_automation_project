@@ -3,24 +3,46 @@ package com.globant.mobile.tests;
 import com.globant.mobile.screens.LoginScreen;
 import com.globant.mobile.screens.NavigationBarScreen;
 import com.globant.mobile.utils.BaseTest;
-import com.globant.mobile.utils.DataUtils;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
 
-    @Test
-    public void loginTest(){
-        NavigationBarScreen navigationBarScreen = new NavigationBarScreen(driver);
+    private NavigationBarScreen navBar;
+    private LoginScreen loginScreen;
+    private String email = "test@test.com";
+    private String password = "12345678";
 
-        LoginScreen loginScreen = navigationBarScreen.clickBtnLoginPage();
-        Assert.assertTrue(loginScreen.checkLoginScreen(),  "Login screen is not displayed");
+    /**
+     * This method runs before each test.
+     * It creates one valid user.
+     * The user has email and password.
+     */
+    @BeforeMethod
+    public void createValidUser(){
+        navBar = new NavigationBarScreen(driver);
+        loginScreen = navBar.clickBtnLoginPage();
         loginScreen.clickBtnSignUpForm();
-        String email = DataUtils.generateRandomEmail();
-        loginScreen.completeSignUpEmail(email);
-        loginScreen.completeSignUpPassword("12345678");
-        loginScreen.completeSignUpConfirmPassword("12345678");
+        loginScreen.completeEmail(email);
+        loginScreen.completePassword(password);
+        loginScreen.completeSignUpConfirmPassword(password);
         loginScreen.clickBtnSubmitSignUp();
-        loginScreen.checkSuccessSignUp();
+        loginScreen.exitSuccessAlert();
     }
+
+    /**
+     * This test checks login is ok.
+     * It uses the user created before.
+     * It clicks login and checks success message.
+     */
+    @Test
+    public void loginSuccessTest(){
+        loginScreen.clickBtnLoginForm();
+        loginScreen.clickBtnSubmitLogin();
+        Assert.assertTrue(loginScreen.checkSuccessProcess(), "Login is not successful");
+        loginScreen.exitSuccessAlert();
+    }
+
 }
+

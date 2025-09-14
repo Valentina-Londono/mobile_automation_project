@@ -16,20 +16,14 @@ public class LoginScreen extends BaseScreen {
     @AndroidFindBy(uiAutomator = "text(\"Sign up\")")
     WebElement btnSignUpForm;
 
-    @AndroidFindBy(accessibility = "input-email")
-    WebElement txtEmailLogin;
-
-    @AndroidFindBy(accessibility = "input-password")
-    WebElement txtPasswordLogin;
-
     @AndroidFindBy(uiAutomator = "className(\"android.view.ViewGroup\").instance(16)")
     WebElement btnSubmitLogin;
 
     @AndroidFindBy(accessibility = "input-email")
-    WebElement txtEmailSignUp;
+    WebElement txtEmail;
 
     @AndroidFindBy(accessibility = "input-password")
-    WebElement txtPasswordSignUp;
+    WebElement txtPassword;
 
     @AndroidFindBy(accessibility = "input-repeat-password")
     WebElement txtConfirmPasswordSignUp;
@@ -39,6 +33,9 @@ public class LoginScreen extends BaseScreen {
 
     @AndroidFindBy(id = "android:id/alertTitle")
     WebElement lblAlertTitle;
+
+    @AndroidFindBy(id = "android:id/button1")
+    WebElement btnAlert;
 
     public LoginScreen(AppiumDriver driver) {
         super(driver);
@@ -56,12 +53,12 @@ public class LoginScreen extends BaseScreen {
         btnSignUpForm.click();
     }
 
-    public void completeSignUpEmail(String email) {
-        txtEmailSignUp.sendKeys(email);
+    public void completeEmail(String email) {
+        txtEmail.sendKeys(email);
     }
 
-    public void completeSignUpPassword(String password) {
-        txtPasswordSignUp.sendKeys(password);
+    public void completePassword(String password) {
+        txtPassword.sendKeys(password);
     }
 
     public void completeSignUpConfirmPassword(String confirmPassword) {
@@ -72,9 +69,17 @@ public class LoginScreen extends BaseScreen {
         btnSubmitSignUp.click();
     }
 
-    public boolean checkSuccessSignUp() {
-        wait.waitForElementVisible(lblAlertTitle);
-        return lblAlertTitle.isDisplayed();
+    public void clickBtnSubmitLogin(){
+        btnSubmitLogin.click();
     }
+
+    public boolean checkSuccessProcess() {
+        return isTheElementVisible(lblAlertTitle, 10);
+    }
+
+    public void exitSuccessAlert(){
+        btnAlert.click();
+    }
+
 
 }

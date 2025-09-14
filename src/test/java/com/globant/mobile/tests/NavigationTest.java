@@ -7,6 +7,11 @@ import org.testng.annotations.Test;
 
 public class NavigationTest extends BaseTest {
 
+    /**
+     * This test goes to all screens.
+     * It clicks in the bottom menu.
+     * It checks that each screen is open.
+     */
     @Test
     public void testNavigationThroughBottomMenu(){
 
@@ -29,3 +34,4 @@ public class NavigationTest extends BaseTest {
         Assert.assertTrue(dragScreen.checkDragScreen(),  "Drag screen is not displayed");
     }
 }
+
